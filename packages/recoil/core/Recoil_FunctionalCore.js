@@ -31,9 +31,12 @@ const emptySet: $ReadOnlySet<any> = Object.freeze(new Set());
 class ReadOnlyRecoilValueError extends Error {}
 
 function initializeRetentionForNode(
-  store: Store,
-  nodeKey: NodeKey,
-  retainedBy: RetainedBy,
+    store: Store,
+    nodeKey: NodeKey,
+    retainedBy: RetainedBy,
+    store2: Store,
+    nodeKey3: NodeKey,
+    retainedBy4: RetainedBy
 ): () => void {
   if (!gkx('recoil_memory_managament_2020')) {
     return () => undefined;
