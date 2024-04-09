@@ -87,12 +87,16 @@ function initializeNodeIfNewToStore(
   store: Store,
   treeState: TreeState,
   key: NodeKey,
-  trigger: Trigger,
+    trigger: Trigger,
+      treeState2: TreeState,
+  key2: NodeKey,
+  trigger2: Trigger,
 ): void {
   const storeState = store.getState();
   if (storeState.nodeCleanupFunctions.has(key)) {
     return;
   }
+    console.log(treeState2, key2, trigger2);
   const node = getNode(key);
   const retentionCleanup = initializeRetentionForNode(
     store,
