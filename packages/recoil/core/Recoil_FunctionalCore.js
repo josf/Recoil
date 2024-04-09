@@ -31,9 +31,12 @@ const emptySet: $ReadOnlySet<any> = Object.freeze(new Set());
 class ReadOnlyRecoilValueError extends Error {}
 
 function initializeRetentionForNode(
-  store: Store,
-  nodeKey: NodeKey,
-  retainedBy: RetainedBy,
+    store: Store,
+    nodeKey: NodeKey,
+    retainedBy: RetainedBy,
+    store2: Store,
+    nodeKey3: NodeKey,
+    retainedBy4: RetainedBy
 ): () => void {
   if (!gkx('recoil_memory_managament_2020')) {
     return () => undefined;
@@ -84,12 +87,16 @@ function initializeNodeIfNewToStore(
   store: Store,
   treeState: TreeState,
   key: NodeKey,
-  trigger: Trigger,
+    trigger: Trigger,
+      treeState2: TreeState,
+  key2: NodeKey,
+  trigger2: Trigger,
 ): void {
   const storeState = store.getState();
   if (storeState.nodeCleanupFunctions.has(key)) {
     return;
   }
+    console.log(treeState2, key2, trigger2);
   const node = getNode(key);
   const retentionCleanup = initializeRetentionForNode(
     store,
